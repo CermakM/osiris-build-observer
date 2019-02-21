@@ -47,7 +47,7 @@ from thoth.common import OpenShift
 from thoth.common import init_logging
 
 
-init_logging({"thoth.osiris_build_observer": os.getenv("LOG_LEVEL", logging.INFO)})
+init_logging({"thoth.osiris_build_observer": os.getenv("LOG_LEVEL", "INFO")})
 
 _LOGGER = logging.getLogger("thoth.osiris_build_observer")
 
