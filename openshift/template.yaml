@@ -94,20 +94,21 @@ objects:
               name: osiris-observer
               resources: {}
               env:
-                - name: DRY_RUN
-                  value: 'false'
+                - name: LOG_LEVEL
+                  value: DEBUG
+                - name: KUBERNETES_VERIFY_TLS
+                  value: '0'
+                - name: MIDDLETIER_NAMESPACE
+                  value: thoth-test-core
                 - name: OPENSHIFT_API_URL
-                  value: https://paas.upshift.redhat.com
+                  value: 'https://paas.upshift.redhat.com'
                 - name: OSIRIS_HOST_NAME
-                  valueFrom:
-                    configMapKeyRef:
-                      key: OSIRIS_HOST_NAME
-                      name: osiris
+                  value: ${OSIRIS_HOST_URL}
                 - name: OSIRIS_HOST_PORT
-                  valueFrom:
-                    configMapKeyRef:
-                      key: OSIRIS_HOST_PORT
-                      name: osiris
+                  value: '5000'
+                - name: OVERWRITE_EXISTING_LOGS
+                  value: '1'
+
       triggers:
         - type: ConfigChange
         - type: ImageChange
@@ -138,3 +139,8 @@ parameters:
     required: true
     name: IMAGE_STREAM_TAG
     value: 'latest'
+
+  - description: Osiris host url.
+    displayName: Osiris host.
+    required: true
+    name: OSIRIS_HOST_URL
