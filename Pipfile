@@ -9,6 +9,7 @@ kubernetes = "*"
 ujson = "*"
 thoth-common = "*"
 openshift = "*"
+pyyaml = ">=4.2b1"
 
 [dev-packages]
 
